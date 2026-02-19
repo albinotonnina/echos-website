@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EchOS — Self-hosted AI memory</title>
+  <meta name="description" content="EchOS is a self-hosted AI assistant with real memory. It captures what you read, watch, and think — and helps you find it again later, in your own words." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EchOS — Self-hosted AI memory" />
+  <meta property="og:description" content="A self-hosted AI assistant with real memory. Captures what you read, watch, and think — and helps you find it again later, in your own words." />
+  <meta property="og:url" content="https://github.com/albinotonnina/echos" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="EchOS — Self-hosted AI memory" />
+  <meta name="twitter:description" content="A self-hosted AI assistant with real memory. Runs on Docker. No subscription. Your data stays on your server." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────────────────── -->
+<nav>
+  <a href="#home" class="nav-logo">EchOS</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#get-started">Get started</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 1: HOME
+     ══════════════════════════════════════════════════════════════════ -->
+<section id="home" class="page-section">
+
+  <div class="hero-eyebrow">v0.3 — open source, self-hosted</div>
+
+  <h1 class="hero-headline">
+    I kept learning things<br>
+    and then <em>losing</em> them.<br>
+    So I built a system<br>
+    that remembers.
+  </h1>
+
+  <p class="hero-sub">
+    EchOS is a self-hosted AI assistant with a real memory.
+    It captures what you read, watch, and think —
+    and helps you find it again later, in your own words.
+  </p>
+
+  <div class="ctas">
+    <a href="#get-started" class="btn-primary">Self-host it</a>
+    <a href="https://github.com/albinotonnina/echos" class="btn-ghost" target="_blank">View on GitHub →</a>
+  </div>
+
+  <!-- Conversation preview -->
+  <div class="convo-demo reveal">
+    <div class="convo-header">
+      <div class="convo-avatar">E</div>
+      <div>
+        <div class="convo-title">EchOS</div>
+        <div class="convo-status">● online</div>
+      </div>
+    </div>
+    <div class="convo-body">
+      <div class="msg msg-user">
+        What did I read about compound interest and long feedback loops?
+        <div class="msg-meta">you, just now</div>
+      </div>
+      <div class="msg msg-bot">
+        Found 3 relevant items from your notes:<br><br>
+        <strong>Article (saved Mar 14)</strong> — "The Psychology of Money" excerpt on how small consistent actions compound invisibly until a threshold.<br><br>
+        <strong>Voice note (saved Jan 31)</strong> — You said: "the feedback loop in language learning is so long that most people quit before they feel it working."<br><br>
+        <strong>Video transcript (saved Feb 6)</strong> — Naval on patience as a prerequisite for compounding.
+        <div class="msg-meta msg-meta-left">EchOS · searched 847 notes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- What it is -->
+  <div class="reveal">
+    <div class="section-label">What it is</div>
+    <h2>Not a notes app.<br>Not a chatbot.</h2>
+    <p style="max-width: 620px;">
+      Closer to a second brain — one that actually works.
+      You send it things throughout the day: a voice note from your commute,
+      a YouTube video, a question you're turning over.
+      It processes, indexes, and stores all of it.
+    </p>
+    <p style="max-width: 620px;">
+      When you need something back, you ask. It searches across everything
+      you've given it and answers from your own knowledge — not from the internet,
+      not from someone else's data.
+    </p>
+    <p style="max-width: 620px;">
+      It runs on your server. No subscription. No company holds your data.
+      You own the whole thing.
+    </p>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Core loop -->
+  <div class="reveal">
+    <div class="section-label">The core loop</div>
+    <div class="card-grid">
+      <div class="card reveal reveal-delay-1">
+        <div class="card-num">01</div>
+        <div class="card-title">Capture</div>
+        <ul class="card-list">
+          <li>Voice note → transcribed &amp; indexed</li>
+          <li>URL → fetched, summarized</li>
+          <li>Text → stored with context</li>
+        </ul>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-num">02</div>
+        <div class="card-title">Recall</div>
+        <ul class="card-list">
+          <li>Ask in plain language</li>
+          <li>No tags or folders needed</li>
+          <li>Searches across everything</li>
+        </ul>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-num">03</div>
+        <div class="card-title">Write</div>
+        <ul class="card-list">
+          <li>Drafts from your own notes</li>
+          <li>Trained on your style</li>
+          <li>Sounds like you</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Three things -->
+  <div class="reveal">
+    <div class="section-label">Three things it does well</div>
+    <div class="feature-rows">
+      <div class="feature-row">
+        <div class="feature-row-title">Capture anything. No friction.</div>
+        <p class="feature-row-body">
+          Voice messages, URLs, plain text, images. You send via Telegram —
+          an app already on your phone. No special app. No login.
+          Just message your bot.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Find what you mean, not just what you typed.</div>
+        <p class="feature-row-body">
+          Hybrid search: full-text BM25 combined with semantic vector search,
+          fused with Reciprocal Rank Fusion. You don't need the exact words.
+          You just need to remember roughly what you were thinking.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Write in your voice.</div>
+        <p class="feature-row-body">
+          Give EchOS examples of your writing. It builds a style profile.
+          When you ask it to write, it draws on your notes and writes
+          the way you write. Not generic. Not robotic.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Files -->
+  <div class="reveal">
+    <div class="section-label">Your files, your tools</div>
+    <blockquote>
+      <p>EchOS stores everything as plain Markdown. Open your vault in Obsidian today. Back it up with git. Move it anywhere. You're not locked in to EchOS — you're just using it to fill the vault.</p>
+    </blockquote>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Bottom CTA -->
+  <div class="reveal">
+    <p style="font-size: 18px; color: var(--text-dim); margin-bottom: 28px;">
+      It runs on Docker. You can have it running in under 10 minutes.
+    </p>
+    <div class="ctas">
+      <a href="#get-started" class="btn-primary">Get started</a>
+      <a href="https://github.com/albinotonnina/echos" class="btn-ghost" target="_blank">GitHub →</a>
+    </div>
+  </div>
+
+</section>
+
+<hr>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 2: HOW IT WORKS
+     ══════════════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="page-section">
+
+  <div class="section-label">How it works</div>
+  <h2>I didn't want to learn<br>a new interface.</h2>
+  <p style="max-width: 600px;">
+    I wanted to talk to it like a person, the way I already send messages all day.
+    That's why EchOS uses Telegram as its primary interface.
+    Your phone is already in your pocket. The app is already open.
+    You just message your bot.
+  </p>
+
+  <div class="rule reveal"></div>
+
+  <!-- Capture -->
+  <div class="reveal">
+    <div class="section-label">Capture</div>
+    <div class="feature-rows">
+      <div class="feature-row">
+        <div class="feature-row-title">Voice messages</div>
+        <p class="feature-row-body">
+          Record a voice note in Telegram. EchOS transcribes it with OpenAI Whisper,
+          extracts ideas and key points, and indexes it. Good for thinking out loud
+          on a walk, or capturing something before you forget it.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">URLs</div>
+        <p class="feature-row-body">
+          Paste a link. EchOS fetches the page, strips the junk, and stores
+          a clean summary alongside the full text. YouTube links get the transcript
+          pulled automatically. No browser extension needed.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Text</div>
+        <p class="feature-row-body">
+          Any message that isn't a URL or voice note is processed as a note.
+          EchOS categorizes it, tags it if relevant, and makes it searchable.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Images</div>
+        <p class="feature-row-body">
+          Send a photo and EchOS stores it with metadata.
+          Image analysis is handled by Claude.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Search -->
+  <div class="reveal">
+    <div class="section-label">Search</div>
+    <h3>Three layers, combined.</h3>
+    <p style="max-width: 600px; margin-bottom: 8px;">
+      In practice: "that thing I read about compound interest last year" finds the article.
+      "My thoughts on moving to a new city" surfaces voice notes you forgot you recorded.
+      You don't need tags — though you can add them if you want.
+    </p>
+    <div class="search-grid">
+      <div class="search-card reveal reveal-delay-1">
+        <div class="search-num">01</div>
+        <div class="search-name">Full-text (BM25)</div>
+        <p class="search-desc">Exact and near-exact phrase matching.<br>Stored in SQLite with FTS5.</p>
+      </div>
+      <div class="search-card reveal reveal-delay-2">
+        <div class="search-num">02</div>
+        <div class="search-name">Semantic (vector)</div>
+        <p class="search-desc">Meaning-based matching.<br>Stored in LanceDB.</p>
+      </div>
+      <div class="search-card reveal reveal-delay-3">
+        <div class="search-num">03</div>
+        <div class="search-name">RRF fusion</div>
+        <p class="search-desc">Reciprocal Rank Fusion combines<br>both ranked lists into one result set.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Write -->
+  <div class="reveal">
+    <div class="section-label">Write</div>
+    <h3>Two separate voices.</h3>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="status-heading">Agent voice</div>
+        <p>Conversational, direct, gets to the point. This is how EchOS talks to you day-to-day.</p>
+      </div>
+      <div class="voice-card">
+        <div class="status-heading">Writing voice</div>
+        <p>You train this one. Give it examples of your writing. It writes for you — from your notes, in your style.</p>
+      </div>
+    </div>
+    <p style="max-width: 620px; margin-top: 24px;">
+      When you ask it to write a blog post on a topic, it doesn't pull from the internet.
+      It searches your own notes for relevant material, then writes in your style from that material.
+      The result sounds like you made it — because the raw ingredients were yours.
+    </p>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Interfaces -->
+  <div class="reveal">
+    <div class="section-label">Interfaces</div>
+    <div class="feature-rows">
+      <div class="feature-row">
+        <div class="feature-row-title">
+          Telegram bot
+          <span class="badge badge-live">Live</span>
+        </div>
+        <p class="feature-row-body">
+          Fully functional. This is the main interface today.
+          Voice, URLs, text, search, writing — everything works.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">
+          Web UI
+          <span class="badge badge-wip">In progress</span>
+        </div>
+        <p class="feature-row-body">
+          A browser-based interface for browsing and searching your knowledge base.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">
+          Terminal UI
+          <span class="badge badge-wip">In progress</span>
+        </div>
+        <p class="feature-row-body">
+          For people who live in the terminal.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Plugin system -->
+  <div class="reveal">
+    <div class="section-label">Plugin system</div>
+    <h3>Extensions, not hardcoded logic.</h3>
+    <p style="max-width: 600px;">
+      EchOS processes content through plugins. Each plugin handles a content type.
+      The plugin system is open — if you want to add support for PDFs, podcasts,
+      newsletters, you can write a plugin that implements the
+      <code>EchosPlugin</code> interface. The core stays clean; the extensions stay modular.
+    </p>
+    <div class="feature-rows" style="margin-top: 24px;">
+      <div class="feature-row">
+        <div class="feature-row-title">YouTube</div>
+        <p class="feature-row-body">Extracts transcripts from YouTube URLs automatically.</p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Article</div>
+        <p class="feature-row-body">Extracts clean text from web pages, strips ads and navigation.</p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Image</div>
+        <p class="feature-row-body">Processes images and generates metadata via Claude.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 3: GET STARTED
+     ══════════════════════════════════════════════════════════════════ -->
+<section id="get-started" class="page-section">
+
+  <div class="section-label">Self-hosting</div>
+  <h2>Up in 10 minutes.<br>On your own server.</h2>
+  <p style="max-width: 580px;">
+    I run this on a small VPS. It costs me less than a coffee a month.
+    The setup takes about 10 minutes if you already have Docker installed.
+  </p>
+
+  <div class="rule reveal"></div>
+
+  <!-- Requirements -->
+  <div class="reveal">
+    <div class="section-label">Requirements</div>
+    <ul class="req-list">
+      <li>Docker and Docker Compose — any recent version</li>
+      <li>A Telegram bot token — get one from <a href="https://t.me/botfather" target="_blank">@BotFather</a> in about 2 minutes</li>
+      <li>An <a href="https://console.anthropic.com" target="_blank">Anthropic API key</a> — for the Claude agent</li>
+      <li>An <a href="https://platform.openai.com" target="_blank">OpenAI API key</a> — for Whisper and embeddings. Optional if you don't need voice or semantic search.</li>
+    </ul>
+    <p style="font-size: 14px; margin-top: 20px; color: var(--text-muted);">
+      That's it. No database server to install. No Redis cluster to configure.
+      Everything runs in Docker.
+    </p>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Steps -->
+  <div class="reveal">
+    <div class="section-label">Steps</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Clone the repo</h3>
+          <div class="terminal">
+            <div class="term-bar">
+              <div class="term-dot"></div>
+              <div class="term-dot"></div>
+              <div class="term-dot"></div>
+            </div>
+            <div class="term-code">
+              <span class="p">$ </span>git clone https://github.com/albinotonnina/echos.git<br>
+              <span class="p">$ </span>cd echos
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Set up your config</h3>
+          <div class="terminal">
+            <div class="term-bar">
+              <div class="term-dot"></div>
+              <div class="term-dot"></div>
+              <div class="term-dot"></div>
+            </div>
+            <div class="term-code">
+              <span class="p">$ </span>cp .env.example .env
+            </div>
+          </div>
+          <p>Open <code>.env</code> and fill in your keys:</p>
+          <ul class="req-list">
+            <li><code>TELEGRAM_BOT_TOKEN</code></li>
+            <li><code>ANTHROPIC_API_KEY</code></li>
+            <li><code>OPENAI_API_KEY</code> — optional if skipping voice/semantic search</li>
+            <li><code>TELEGRAM_ALLOWED_USER_IDS</code> — your Telegram user ID. Only these users can interact with the bot.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Start it</h3>
+          <div class="terminal">
+            <div class="term-bar">
+              <div class="term-dot"></div>
+              <div class="term-dot"></div>
+              <div class="term-dot"></div>
+            </div>
+            <div class="term-code">
+              <span class="p">$ </span>docker-compose up -d<br>
+              <span class="c">Starting echos ... done</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Start the bot</h3>
+          <p>Open Telegram, find your bot, and send <code>/start</code>.</p>
+          <p>That's it. You're running.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Going further -->
+  <div class="reveal going-further">
+    <div class="status-heading">Going further</div>
+    <ul class="req-list">
+      <li>Full configuration reference → docs</li>
+      <li>Plugin development → docs/plugins</li>
+      <li>Troubleshooting common issues → docs/troubleshooting</li>
+    </ul>
+  </div>
+
+</section>
+
+<hr>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 4: ABOUT
+     ══════════════════════════════════════════════════════════════════ -->
+<section id="about" class="page-section">
+
+  <div class="section-label">About</div>
+  <h2>Why I built this</h2>
+
+  <div class="prose reveal">
+    <p>
+      A few years ago I noticed a pattern. I'd read something interesting.
+      I'd think "I'll remember that." I wouldn't.
+    </p>
+    <p>
+      I tried note-taking apps. I tried tagging systems. I tried a Zettelkasten.
+      Each one worked until it didn't — until the friction of maintaining the system
+      cost more than the value it gave back.
+    </p>
+    <p>
+      The problem wasn't the tools. It was that capturing and retrieving are
+      two different problems, and most tools optimise for one at the expense of the other.
+    </p>
+    <p>
+      I wanted something that made capturing effortless — Telegram, voice notes, paste a URL —
+      and retrieval smart — ask a question, get an answer. I wanted it to run
+      on infrastructure I controlled. I didn't want my knowledge base to be someone else's product.
+    </p>
+    <p>
+      So I built EchOS. It runs on my server. I use it every day.
+      It's not finished — the web UI is still in progress — but the core loop works,
+      and it's changed how I manage information.
+    </p>
+    <p>
+      I'm sharing it because other people have the same problem, and because the kind of people
+      who want to run their own knowledge infrastructure tend to be good at improving
+      things they care about.
+    </p>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Philosophy -->
+  <div class="reveal">
+    <div class="section-label">The philosophy</div>
+    <blockquote>
+      <p>No dashboards. No schemas. No commands to memorize. Your data is Markdown files on your filesystem.</p>
+    </blockquote>
+    <div class="prose">
+      <p>
+        EchOS is an interface layer over your own files, not a replacement for them.
+        The AI does the heavy lifting — but the underlying data is always yours,
+        always portable, always human-readable.
+      </p>
+      <p>
+        Open your notes in any editor. Search them with <code>grep</code>.
+        Back them up with git. Move them to a different system whenever you want.
+      </p>
+      <p>
+        Privacy isn't a feature. It's the architecture. Your notes never leave your server
+        except to reach the AI APIs you've explicitly configured.
+        No analytics. No tracking. No "we may use your data to improve our service."
+        You run it; you control it.
+      </p>
+    </div>
+  </div>
+
+  <div class="rule reveal"></div>
+
+  <!-- Status -->
+  <div class="reveal">
+    <div class="section-label">What's working and what's not</div>
+    <div class="status-cols">
+      <div class="status-col">
+        <div class="status-heading">Working today</div>
+        <ul class="status-list">
+          <li>Telegram bot — voice, URLs, text, images</li>
+          <li>Hybrid search — full-text + semantic</li>
+          <li>Writing voice — style profiles and generation</li>
+          <li>Plugin system — YouTube, article, image</li>
+          <li>Obsidian-compatible Markdown export</li>
+        </ul>
+      </div>
+      <div class="status-col">
+        <div class="status-heading">On the list</div>
+        <ul class="status-list pending">
+          <li>Web UI</li>
+          <li>Terminal UI</li>
+          <li>PDF support</li>
+          <li>Better scheduling and background jobs</li>
+          <li>More plugin examples and documentation</li>
+        </ul>
+      </div>
+    </div>
+    <p class="version-note">
+      This is v0.3. Real software I run and depend on, built in public.<br>
+      Expect rough edges. Expect improvement.<br><br>
+      If you use it and hit something broken, open an issue.
+      If you add something useful, I'll look at the PR.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- ── Footer ─────────────────────────────────────────────────────── -->
+<footer>
+  <p>EchOS v0.3 — <a href="https://github.com/albinotonnina/echos" target="_blank">github.com/albinotonnina/echos</a></p>
+  <p>MIT License — built by <a href="https://github.com/albinotonnina" target="_blank">Albino Tonnina</a></p>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
