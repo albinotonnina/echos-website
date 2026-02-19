@@ -158,7 +158,7 @@ The plugin system is open. If you want to add support for a new content type —
 
 ### Intro
 
-I run this on a small VPS. It costs me less than a coffee a month. The setup takes about 10 minutes if you already have Docker installed.
+I run this on a small VPS. It costs me less than a coffee a month. Two paths to get running: a guided setup wizard (recommended for first-timers) or Docker Compose for a clean production deployment.
 
 Here's what you need.
 
@@ -166,16 +166,17 @@ Here's what you need.
 
 ### Requirements
 
-- Docker and Docker Compose (any recent version)
+- Node.js 20+ and pnpm 9+ (for the wizard path)
+- Or Docker and Docker Compose (for the container path)
 - A Telegram bot token — get one from [@BotFather](https://t.me/botfather) in about 2 minutes
 - An [Anthropic API key](https://console.anthropic.com) — for the Claude agent
 - An [OpenAI API key](https://platform.openai.com) — for Whisper (voice transcription) and embeddings. Optional if you don't need voice or semantic search.
 
-That's it. No database server to install. No Redis cluster to configure. Everything runs in Docker.
+That's it. No database server to install. SQLite and LanceDB are embedded.
 
 ---
 
-### Steps
+### Option A: Setup wizard (recommended)
 
 **1. Clone the repo**
 
@@ -184,23 +185,19 @@ git clone https://github.com/albinotonnina/echos.git
 cd echos
 ```
 
-**2. Set up your config**
+**2. Install and run the wizard**
 
 ```
-cp .env.example .env
+pnpm install
+pnpm wizard
 ```
 
-Open `.env` and fill in your keys:
+The wizard validates your environment, walks you through API keys, configures your interfaces, and writes your `.env` file.
 
-- `TELEGRAM_BOT_TOKEN`
-- `ANTHROPIC_API_KEY`
-- `OPENAI_API_KEY` (if using voice or semantic search)
-- `TELEGRAM_ALLOWED_USER_IDS` — your Telegram user ID. Only these users can interact with the bot.
-
-**3. Start it**
+**3. Start**
 
 ```
-docker-compose up -d
+pnpm start
 ```
 
 **4. Start the bot**
@@ -208,6 +205,35 @@ docker-compose up -d
 Open Telegram, find your bot, and send `/start`.
 
 That's it. You're running.
+
+---
+
+### Option B: Docker Compose
+
+**1. Clone and configure**
+
+```
+git clone https://github.com/albinotonnina/echos.git
+cd echos
+cp .env.example .env
+```
+
+Open `.env` and fill in:
+
+- `TELEGRAM_BOT_TOKEN`
+- `ANTHROPIC_API_KEY`
+- `OPENAI_API_KEY` (optional)
+- `TELEGRAM_ALLOWED_USER_IDS` — your Telegram user ID. Only these users can interact with the bot.
+
+**2. Start**
+
+```
+docker-compose up -d
+```
+
+**3. Start the bot**
+
+Open Telegram and send `/start`.
 
 ---
 
