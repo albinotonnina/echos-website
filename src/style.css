@@ -640,6 +640,52 @@ blockquote p {
   margin: 0;
 }
 
+/* ─── Install paths ──────────────────────────────────────────────── */
+.install-path {
+  border-top: 1px solid var(--border);
+  padding: 36px 0;
+}
+
+.install-path:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.install-path-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.install-path-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 200;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+  padding-top: 2px;
+}
+
+.install-path-name {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.install-path-desc {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 560px;
+}
+
 /* ─── Going further ───────────────────────────────────────────────── */
 .going-further {
   background: var(--surface);

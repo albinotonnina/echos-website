@@ -389,106 +389,123 @@
 <section id="get-started" class="page-section">
 
   <div class="section-label">Self-hosting</div>
-  <h2>Up in 10 minutes.<br>On your own server.</h2>
+  <h2>Three ways<br>to run it.</h2>
   <p style="max-width: 580px;">
-    I run this on a small VPS. It costs me less than a coffee a month.
-    The setup takes about 10 minutes if you already have Docker installed.
+    I run this on a small VPS. It costs less than a coffee a month.
+    Pick whichever setup matches how you work.
   </p>
 
   <div class="rule reveal"></div>
 
   <!-- Requirements -->
   <div class="reveal">
-    <div class="section-label">Requirements</div>
-    <ul class="req-list">
-      <li>Docker and Docker Compose — any recent version</li>
-      <li>A Telegram bot token — get one from <a href="https://t.me/botfather" target="_blank">@BotFather</a> in about 2 minutes</li>
-      <li>An <a href="https://console.anthropic.com" target="_blank">Anthropic API key</a> — for the Claude agent</li>
-      <li>An <a href="https://platform.openai.com" target="_blank">OpenAI API key</a> — for Whisper and embeddings. Optional if you don't need voice or semantic search.</li>
-    </ul>
-    <p style="font-size: 14px; margin-top: 20px; color: var(--text-muted);">
-      That's it. No database server to install. No Redis cluster to configure.
-      Everything runs in Docker.
-    </p>
+    <div class="section-label">What you need</div>
+    <div class="feature-rows">
+      <div class="feature-row">
+        <div class="feature-row-title">Anthropic API key</div>
+        <p class="feature-row-body">
+          Required. This is a <strong style="color: var(--text);">pay-as-you-go API key</strong>
+          from <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>
+          — not a Claude Pro or Max subscription. Those don't provide programmatic access.
+          Typical usage costs a few dollars a month.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Telegram bot token</div>
+        <p class="feature-row-body">
+          Required. Get one from <a href="https://t.me/botfather" target="_blank">@BotFather</a>
+          in about 2 minutes. You'll also need your own Telegram user ID — the bot
+          uses an allowlist so only you can interact with it.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">OpenAI API key</div>
+        <p class="feature-row-body">
+          Optional. Needed for voice transcription (Whisper) and semantic search
+          (embeddings). If you skip this, text and URL capture still work —
+          you just lose voice notes and meaning-based search.
+        </p>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-title">Node.js 20+ and pnpm 9+</div>
+        <p class="feature-row-body">
+          Required for the wizard and local paths. Not needed if you're going straight to Docker.
+          The VPS one-liner installs everything automatically.
+        </p>
+      </div>
+    </div>
   </div>
 
   <div class="rule reveal"></div>
 
-  <!-- Steps -->
+  <!-- Install paths -->
   <div class="reveal">
-    <div class="section-label">Steps</div>
-    <div class="steps">
+    <div class="section-label">Setup</div>
 
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <h3>Clone the repo</h3>
-          <div class="terminal">
-            <div class="term-bar">
-              <div class="term-dot"></div>
-              <div class="term-dot"></div>
-              <div class="term-dot"></div>
-            </div>
-            <div class="term-code">
-              <span class="p">$ </span>git clone https://github.com/albinotonnina/echos.git<br>
-              <span class="p">$ </span>cd echos
-            </div>
-          </div>
+    <!-- Path A: Wizard -->
+    <div class="install-path">
+      <div class="install-path-header">
+        <span class="install-path-letter">A</span>
+        <div>
+          <div class="install-path-name">Interactive wizard <span class="badge badge-live">Recommended</span></div>
+          <div class="install-path-desc">Guided setup that validates your environment, walks through API keys, and writes your config.</div>
         </div>
       </div>
-
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <h3>Set up your config</h3>
-          <div class="terminal">
-            <div class="term-bar">
-              <div class="term-dot"></div>
-              <div class="term-dot"></div>
-              <div class="term-dot"></div>
-            </div>
-            <div class="term-code">
-              <span class="p">$ </span>cp .env.example .env
-            </div>
-          </div>
-          <p>Open <code>.env</code> and fill in your keys:</p>
-          <ul class="req-list">
-            <li><code>TELEGRAM_BOT_TOKEN</code></li>
-            <li><code>ANTHROPIC_API_KEY</code></li>
-            <li><code>OPENAI_API_KEY</code> — optional if skipping voice/semantic search</li>
-            <li><code>TELEGRAM_ALLOWED_USER_IDS</code> — your Telegram user ID. Only these users can interact with the bot.</li>
-          </ul>
+      <div class="terminal">
+        <div class="term-bar">
+          <div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div>
+        </div>
+        <div class="term-code">
+          <span class="p">$ </span>git clone https://github.com/albinotonnina/echos.git &amp;&amp; cd echos<br>
+          <span class="p">$ </span>pnpm install<br>
+          <span class="p">$ </span>pnpm wizard<br>
+          <span class="c"># walks you through keys, interfaces, storage</span><br>
+          <span class="p">$ </span>pnpm build &amp;&amp; pnpm start
         </div>
       </div>
-
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <h3>Start it</h3>
-          <div class="terminal">
-            <div class="term-bar">
-              <div class="term-dot"></div>
-              <div class="term-dot"></div>
-              <div class="term-dot"></div>
-            </div>
-            <div class="term-code">
-              <span class="p">$ </span>docker-compose up -d<br>
-              <span class="c">Starting echos ... done</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-body">
-          <h3>Start the bot</h3>
-          <p>Open Telegram, find your bot, and send <code>/start</code>.</p>
-          <p>That's it. You're running.</p>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Path B: VPS one-liner -->
+    <div class="install-path">
+      <div class="install-path-header">
+        <span class="install-path-letter">B</span>
+        <div>
+          <div class="install-path-name">VPS one-liner <span class="badge badge-wip">Fastest</span></div>
+          <div class="install-path-desc">Detects your platform, installs prerequisites, clones the repo, and launches the wizard.</div>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="term-bar">
+          <div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div>
+        </div>
+        <div class="term-code">
+          <span class="p">$ </span>curl -sSL https://raw.githubusercontent.com/albinotonnina/echos/main/install.sh | bash
+        </div>
+      </div>
+    </div>
+
+    <!-- Path C: Docker -->
+    <div class="install-path">
+      <div class="install-path-header">
+        <span class="install-path-letter">C</span>
+        <div>
+          <div class="install-path-name">Docker Compose <span class="badge badge-wip">Production</span></div>
+          <div class="install-path-desc">Containerised deployment with Redis included. Add nginx + Let's Encrypt for SSL.</div>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="term-bar">
+          <div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div>
+        </div>
+        <div class="term-code">
+          <span class="p">$ </span>git clone https://github.com/albinotonnina/echos.git &amp;&amp; cd echos<br>
+          <span class="p">$ </span>pnpm wizard --non-interactive<br>
+          <span class="c"># reads env vars, writes .env</span><br>
+          <span class="p">$ </span>cd docker &amp;&amp; docker compose up -d
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="rule reveal"></div>
@@ -497,9 +514,9 @@
   <div class="reveal going-further">
     <div class="status-heading">Going further</div>
     <ul class="req-list">
-      <li>Full configuration reference → docs</li>
-      <li>Plugin development → docs/plugins</li>
-      <li>Troubleshooting common issues → docs/troubleshooting</li>
+      <li><a href="https://github.com/albinotonnina/echos/blob/main/docs/DEPLOYMENT.md" target="_blank">Deployment guide</a> — VPS, systemd, nginx, SSL</li>
+      <li><a href="https://github.com/albinotonnina/echos/blob/main/docs/PLUGINS.md" target="_blank">Plugin development</a> — build your own content processor</li>
+      <li><a href="https://github.com/albinotonnina/echos/blob/main/docs/TROUBLESHOOTING.md" target="_blank">Troubleshooting</a> — common issues and fixes</li>
     </ul>
   </div>
 
