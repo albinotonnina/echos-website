@@ -501,7 +501,9 @@
           </div>
           <div class="term-code">
             <span class="p">$ </span>curl -sSL https://raw.githubusercontent.com/albinotonnina/echos/main/install.sh |
-            bash
+            bash<br>
+            <span class="c"># installs deps + launches wizard (accepts build offer when prompted)</span><br>
+            <span class="p">$ </span>pnpm build &amp;&amp; pnpm start<span class="c">&nbsp;&nbsp;# if wizard didn't build</span>
           </div>
         </div>
       </div>
@@ -524,8 +526,12 @@
           </div>
           <div class="term-code">
             <span class="p">$ </span>git clone https://github.com/albinotonnina/echos.git &amp;&amp; cd echos<br>
-            <span class="p">$ </span>pnpm wizard --non-interactive<br>
-            <span class="c"># reads env vars, writes .env</span><br>
+            <span class="c"># set required env vars first</span><br>
+            <span class="p">$ </span>export ANTHROPIC_API_KEY=sk-ant-...<br>
+            <span class="p">$ </span>export ALLOWED_USER_IDS=123456789<br>
+            <span class="p">$ </span>export TELEGRAM_BOT_TOKEN=...&nbsp;&nbsp;<span class="c"># if using Telegram</span><br>
+            <span class="p">$ </span>export ENABLE_TELEGRAM=true<br>
+            <span class="p">$ </span>pnpm wizard --non-interactive<span class="c">&nbsp;&nbsp;# reads env vars, writes .env</span><br>
             <span class="p">$ </span>cd docker &amp;&amp; docker compose up -d
           </div>
         </div>
