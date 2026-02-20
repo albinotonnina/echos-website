@@ -640,6 +640,13 @@ blockquote p {
   margin: 0;
 }
 
+.voice-note {
+  font-size: 12px !important;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 12px !important;
+}
+
 /* ─── Install paths ──────────────────────────────────────────────── */
 .install-path {
   border-top: 1px solid var(--border);
