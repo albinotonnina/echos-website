@@ -52,11 +52,11 @@ When the user needs something back they ask in plain language.
 - Fastify for the Web API
 
 **Interfaces:**
-| Interface   | Status       | Notes                                              |
-|-------------|------------- |----------------------------------------------------|
-| Telegram    | Stable       | Primary interface. Voice, URLs, text, photos.      |
-| Web API     | Experimental | REST API, disabled by default                      |
-| Terminal UI | Experimental | TUI, disabled by default                           |
+| Interface | Status       | Notes                                                          |
+|-----------|--------------|----------------------------------------------------------------|
+| Telegram  | Stable       | Primary interface. Voice, URLs, text, photos.                  |
+| CLI       | Stable       | `pnpm echos` — standalone, no daemon. One-shot, pipe, REPL.    |
+| Web API   | Experimental | REST API, disabled by default, requires `WEB_API_KEY`          |
 
 **Search:** Three layers combined
 1. Full-text BM25 via SQLite FTS5

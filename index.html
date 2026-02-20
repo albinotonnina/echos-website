@@ -340,11 +340,13 @@
       </div>
       <div class="feature-row">
         <div class="feature-row-title">
-          Terminal UI
-          <span class="badge badge-wip">In progress</span>
+          CLI
+          <span class="badge badge-live">Stable</span>
         </div>
         <p class="feature-row-body">
-          For people who live in the terminal.
+          <code>pnpm echos</code> — standalone, no daemon required. Three auto-detected modes:
+          one-shot (<code>pnpm echos "query"</code>), pipe (<code>echo "…" | pnpm echos</code>),
+          and interactive REPL. Works over SSH. Plain output in pipe mode makes it scriptable.
         </p>
       </div>
     </div>
@@ -604,6 +606,7 @@
           <li>Hybrid search — full-text + semantic</li>
           <li>Writing voice — style profiles and generation</li>
           <li>Plugin system — YouTube, article, image</li>
+          <li>CLI — one-shot, pipe, and interactive REPL</li>
           <li>Obsidian-compatible Markdown export</li>
         </ul>
       </div>
@@ -611,7 +614,6 @@
         <div class="status-heading">On the list</div>
         <ul class="status-list pending">
           <li>Web UI</li>
-          <li>Terminal UI</li>
           <li>PDF support</li>
           <li>Better scheduling and background jobs</li>
           <li>More plugin examples and documentation</li>
