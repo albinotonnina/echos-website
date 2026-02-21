@@ -40,7 +40,7 @@ When the user needs something back they ask in plain language.
 
 ### Real technical details (verified from repo)
 
-**Version:** 0.5.2
+**Version:** 0.5.4
 
 **Stack:**
 - Node.js 20+ / TypeScript (strict), pnpm monorepo
