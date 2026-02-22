@@ -25,7 +25,7 @@ async function renderBlogIndex() {
         list.innerHTML = posts
             .map(
                 (post, i) => `
-      <a href="/blog/post.html?slug=${post.slug}" class="blog-card reveal${i < 3 ? ` reveal-delay-${i + 1}` : ''}">
+      <a href="/blog/${post.slug}/" class="blog-card reveal${i < 3 ? ` reveal-delay-${i + 1}` : ''}">
         <div class="blog-card-date">${formatDate(post.date)}</div>
         <div class="blog-card-title">${post.title}</div>
         <div class="blog-card-summary">${post.summary}</div>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why I built a second brain that actually works | EchOS Blog</title>
+  <meta name="description" content="I kept losing things I learned. Notes apps didn't stick. So I built EchOS — a self-hosted AI assistant that captures, indexes, and retrieves everything I feed it." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://echos.sh/blog/hello-world/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Why I built a second brain that actually works" />
+  <meta property="og:description" content="I kept losing things I learned. Notes apps didn't stick. So I built EchOS — a self-hosted AI assistant that captures, indexes, and retrieves everything I feed it." />
+  <meta property="og:url" content="https://echos.sh/blog/hello-world/" />
+  <meta property="og:site_name" content="EchOS" />
+  <meta property="article:published_time" content="2026-02-22T00:00:00Z" />
+  <meta property="article:author" content="Albino Tonnina" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Why I built a second brain that actually works" />
+  <meta name="twitter:description" content="I kept losing things I learned. Notes apps didn't stick. So I built EchOS — a self-hosted AI assistant that captures, indexes, and retrieves everything I feed it." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Why I built a second brain that actually works",
+    "description": "I kept losing things I learned. Notes apps didn't stick. So I built EchOS — a self-hosted AI assistant that captures, indexes, and retrieves everything I feed it.",
+    "datePublished": "2026-02-22T00:00:00Z",
+    "author": {
+      "@type": "Person",
+      "name": "Albino Tonnina",
+      "url": "https://github.com/albinotonnina"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "EchOS"
+    },
+    "url": "https://echos.sh/blog/hello-world/",
+    "mainEntityOfPage": "https://echos.sh/blog/hello-world/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────────────── -->
+  <nav>
+    <a href="/" class="nav-logo">EchOS</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="/#how-it-works">How it works</a></li>
+      <li><a href="/#get-started">Get started</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-section blog-section">
+    <a href="/blog/" class="blog-back">← All posts</a>
+
+    <article class="blog-article">
+      <div class="blog-post-header">
+        <div class="section-label">22 February 2026</div>
+        <h1 class="blog-post-title">Why I built a second brain that actually works</h1>
+      </div>
+      <div class="prose blog-content">
+        <p>I have a bad habit. I read something interesting, think &quot;I&#39;ll remember that,&quot; and then I don&#39;t.</p>
+<p>I tried all the usual things. Notion. Obsidian. Apple Notes. A physical notebook for about six days. Each one worked for a while, until maintaining the system took more effort than the system gave back.</p>
+<p>The problem isn&#39;t the tools. It&#39;s the gap between capturing and retrieving. Most tools optimise for one side and leave the other broken. Easy to save, impossible to find. Or meticulously organized, but too much friction to capture anything in the first place.</p>
+<h2>What I wanted</h2>
+<p>Something I could message from my phone, the way I already message people all day. Voice notes when I&#39;m walking. URLs when I find something worth keeping. Just text when I&#39;m thinking through a problem.</p>
+<p>And then, weeks later, I wanted to ask: &quot;what did I read about compound interest?&quot; and get an actual answer. Not a list of files. Not a search results page. An answer, drawn from my own notes.</p>
+<h2>What I built</h2>
+<p>EchOS runs on a small VPS. It uses Telegram as the primary interface — no new app to install, no login, just a bot I message. It processes everything I send: transcribes voice notes with Whisper, fetches and summarizes articles, indexes plain text.</p>
+<p>Search uses three layers: full-text BM25 via SQLite FTS5, semantic vector search via LanceDB, and Reciprocal Rank Fusion to merge the results. In practice, this means I don&#39;t need to remember the exact words I used. I just need to remember roughly what I was thinking about.</p>
+<p>The whole thing stores notes as plain Markdown with YAML frontmatter. I can open the vault in Obsidian. Back it up with git. Move it anywhere. The AI layer sits on top; the data underneath is just files.</p>
+<h2>What&#39;s next</h2>
+<p>I&#39;m working on a web UI, better scheduling for background jobs, and PDF support. The core loop — capture, recall, write — works. Everything else is polish.</p>
+<p>If you want to try it, the <a href="/index.html#get-started">setup guide</a> takes about 10 minutes.</p>
+
+      </div>
+    </article>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────── -->
+  <footer>
+    <p>EchOS v0.5.4 · <a href="https://github.com/albinotonnina/echos"
+        target="_blank">github.com/albinotonnina/echos</a>
+    </p>
+    <p>MIT License · built by <a href="https://github.com/albinotonnina" target="_blank">Albino Tonnina</a></p>
+  </footer>
+
+  <script type="module" src="/src/blog.js"></script>
+</body>
+
+</html>

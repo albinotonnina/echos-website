@@ -3,8 +3,7 @@ node_modules/
 
 # Build output
 dist/
-blog/dist/
-blog/posts.json
+blog/_generated/
 
 # Environment
 .env

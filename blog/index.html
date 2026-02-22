@@ -5,10 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog | EchOS</title>
-    <meta name="description" content="" />
+    <meta name="description"
+        content="Notes on building EchOS — a self-hosted AI assistant with real memory. Updates, technical deep dives, and project reflections." />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://echos.sh/blog/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog | EchOS" />
+    <meta property="og:description" content="Notes on building EchOS — a self-hosted AI assistant with real memory." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +33,7 @@
         <a href="/" class="nav-logo">EchOS</a>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="/blog.html" class="active">Blog</a></li>
+            <li><a href="/blog/" class="active">Blog</a></li>
             <li><a href="/#how-it-works">How it works</a></li>
             <li><a href="/#get-started">Get started</a></li>
             <li><a href="/#about">About</a></li>
@@ -32,17 +41,15 @@
     </nav>
 
     <section class="page-section blog-section">
-        <a href="/blog.html" class="blog-back">← All posts</a>
+        <div class="section-label">Blog</div>
+        <h1 class="blog-headline">Notes on building EchOS</h1>
+        <p class="blog-intro">Updates, technical deep dives, and things I'm thinking about.</p>
 
-        <article id="blog-post" class="blog-article">
-            <div class="blog-post-header">
-                <div class="section-label" id="blog-post-date"></div>
-                <h1 id="blog-post-title" class="blog-post-title"></h1>
-            </div>
-            <div id="blog-post-content" class="prose blog-content">
-                <!-- Post HTML is injected here by blog-post.js -->
-            </div>
-        </article>
+        <div class="rule"></div>
+
+        <div id="blog-list" class="blog-list">
+            <!-- Posts are injected here by blog.js -->
+        </div>
     </section>
 
     <!-- ── Footer ─────────────────────────────────────────────────────── -->
@@ -53,7 +60,7 @@
         <p>MIT License · built by <a href="https://github.com/albinotonnina" target="_blank">Albino Tonnina</a></p>
     </footer>
 
-    <script type="module" src="/src/blog-post.js"></script>
+    <script type="module" src="/src/blog.js"></script>
 </body>
 
 </html>
