@@ -99,22 +99,36 @@ A single-page marketing/product site. Four sections that scroll continuously.
 
 ```
 echos-website/
-├── index.html              # All HTML — edit this to change content
+├── index.html              # Main site HTML
+├── blog.html               # Blog index page
+├── blog/
+│   ├── post.html           # Blog post template page
+│   ├── posts/              # Markdown source files (you write these)
+│   │   └── hello-world.md
+│   ├── posts.json           # Auto-generated index (gitignored)
+│   └── dist/               # Auto-generated HTML snippets (gitignored)
+├── scripts/
+│   └── build-blog.js       # Build script: .md → .html + posts.json
 ├── src/
 │   ├── style.css           # All styles. Design tokens at the top.
-│   └── main.js             # Scroll reveal + active nav. Minimal.
+│   ├── main.js             # Scroll reveal + active nav. Minimal.
+│   ├── blog.js             # Blog index page JS
+│   └── blog-post.js        # Blog post page JS
+├── vite.config.js          # Multi-page Vite config
 ├── public/favicon.svg
 └── docs/website-content.md # Copy drafts and working notes
 ```
 
 ### Sections
 
-| Anchor          | Content                                          |
+| Page / Anchor   | Content                                          |
 |-----------------|--------------------------------------------------|
 | `#home`         | Hero, core loop, three key features, files CTA   |
 | `#how-it-works` | Capture, search, write, interfaces, plugins      |
 | `#get-started`  | Requirements + 4 setup steps                     |
 | `#about`        | Origin story, philosophy, what works / what's not|
+| `/blog.html`    | Blog index — auto-generated from posts.json      |
+| `/blog/post.html` | Single post page — loads HTML by slug          |
 
 ### Design tokens (CSS custom properties in `src/style.css`)
 
@@ -169,6 +183,39 @@ These come directly from the author's own guidelines in `docs/website-content.md
 - Do not claim Redis is required — the scheduler is optional
 - Do not simplify the setup steps beyond what the README actually says
 - Always link to https://github.com/albinotonnina/echos — never to any other URL
+
+---
+
+## Blog
+
+### How to create a new post
+
+1. Create a `.md` file in `blog/posts/` (filename becomes the slug)
+2. Add YAML frontmatter at the top:
+
+```yaml
+---
+title: Your Post Title
+date: 2026-02-22
+summary: A one-line summary shown on the blog index.
+---
+```
+
+3. Write the post body in Markdown below the frontmatter
+4. Run `npm run dev` to preview locally (blog builds automatically)
+5. Push to `main` — Vercel deploys with the new post
+
+The blog index updates itself. No need to manually add links anywhere.
+
+### How it works under the hood
+
+`scripts/build-blog.js` runs before every `dev` and `build`:
+- Reads all `.md` files from `blog/posts/`
+- Parses frontmatter with `gray-matter`, converts Markdown → HTML with `marked`
+- Writes `blog/posts.json` (the index) and `blog/dist/<slug>.html` (HTML snippets)
+- On production builds, copies these into `dist/` after Vite finishes
+
+Generated files (`blog/posts.json`, `blog/dist/`) are gitignored.
 
 ---
 
