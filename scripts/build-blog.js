@@ -185,7 +185,7 @@ for (const post of posts) {
 
   <!-- ── Footer ─────────────────────────────────────────────────────── -->
   <footer>
-    <p>EchOS v0.5.4 · <a href="https://github.com/albinotonnina/echos"
+    <p>EchOS v0.6.0 · <a href="https://github.com/albinotonnina/echos"
         target="_blank">github.com/albinotonnina/echos</a> · <a href="https://discord.gg/qbdCjhxB2u" target="_blank">Discord</a>
     </p>
     <p>MIT License · built by <a href="https://github.com/albinotonnina" target="_blank">Albino Tonnina</a></p>
