@@ -1,5 +1,23 @@
 import './style.css'
 
+// ── Mobile Menu ──────────────────────────────────────────────────────
+const menuToggle = document.querySelector('.menu-toggle')
+const navLinksContainer = document.querySelector('.nav-links')
+const navLinksItems = document.querySelectorAll('.nav-links a')
+
+if (menuToggle && navLinksContainer) {
+  menuToggle.addEventListener('click', () => {
+    navLinksContainer.classList.toggle('nav-active')
+  })
+
+  // Close menu when a link is clicked
+  navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksContainer.classList.remove('nav-active')
+    })
+  })
+}
+
 // ── Scroll reveal ────────────────────────────────────────────────────
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
