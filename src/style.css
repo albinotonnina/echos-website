@@ -272,8 +272,15 @@ hr {
 .convo-demo {
   background: var(--surface);
   border: 1px solid var(--border-strong);
-  max-width: 520px;
-  margin: 72px 0 0;
+  margin: 72px auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1000px;
 }
 
 .convo-header {

@@ -56,6 +56,10 @@
     }
   }
   </script>
+
+  <!-- Asciinema Player -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/asciinema-player@3.15.0/dist/bundle/asciinema-player.css" />
 </head>
 
 <body>
@@ -99,9 +103,15 @@
     </div>
 
     <!-- Conversation preview -->
-    <div class="convo-demo reveal" style="padding: 0; overflow: hidden; border: none; background: transparent;">
+    <div class="convo-demo reveal">
       <img src="/images/01.jpg" alt="EchOS Bot UI"
-        style="max-width: 100%; width: auto; height: auto; display: block; margin: 0 auto; border-radius: var(--radius);" />
+        style="width: 50%; height: auto; display: block; border-radius: var(--radius); object-fit: cover;" />
+      <img src="/images/02.jpg" alt="EchOS Bot UI 2"
+        style="width: 50%; height: auto; display: block; border-radius: var(--radius); object-fit: cover;" />
+    </div>
+
+    <div id="cli-demo" class="reveal"
+      style="border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); margin-top: 40px; width: 100%; max-width: 1000px; margin-left: auto; margin-right: auto;">
     </div>
 
     <div class="rule reveal"></div>
@@ -683,6 +693,24 @@
   </footer>
 
   <script type="module" src="/src/main.js"></script>
+
+  <!-- Asciinema Player Setup -->
+  <script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.15.0/dist/bundle/asciinema-player.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cliDemoObj = document.getElementById('cli-demo');
+      if (cliDemoObj) {
+        AsciinemaPlayer.create('/echos-demo.cast', cliDemoObj, {
+          autoPlay: true,
+          loop: true,
+          theme: 'dracula',
+          fit: 'width',
+          poster: 'npt:0:00', // Uses frame at 0:00 as poster
+          idleTimeLimit: 2
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
