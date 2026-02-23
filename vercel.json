@@ -1,4 +1,14 @@
 {
     "cleanUrls": true,
-    "trailingSlash": true
+    "trailingSlash": true,
+    "rewrites": [
+        {
+            "source": "/docs",
+            "destination": "https://echos.mintlify.dev/docs"
+        },
+        {
+            "source": "/docs/:match*",
+            "destination": "https://echos.mintlify.dev/docs/:match*"
+        }
+    ]
 }
