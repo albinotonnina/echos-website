@@ -1,112 +1,36 @@
-# echos-website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Marketing site for [EchOS](https://github.com/albinotonnina/echos) — a self-hosted AI assistant with real memory.
+## Getting Started
 
-**App repo:** https://github.com/albinotonnina/echos
-**Live site:** https://echos-website.vercel.app
-
----
-
-## Stack
-
-- [Vite](https://vite.dev) — vanilla JS, no framework
-- Plain HTML + CSS + JS
-- Deployed on [Vercel](https://vercel.com) — auto-deploys on push to `main`
-
----
-
-## Getting started
+First, run the development server:
 
 ```bash
-npm install
-npm run dev       # http://localhost:5173
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-```bash
-npm run build     # production build → dist/
-npm run preview   # serve dist/ locally
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Project structure
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-```
-echos-website/
-├── index.html              # All page HTML (single-page, section-based)
-├── src/
-│   ├── main.js             # Scroll reveal + active nav
-│   └── style.css           # All styles + design tokens
-├── public/
-│   └── favicon.svg         # Favicon
-└── docs/
-    └── website-content.md  # Source of truth for copy
-```
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-## Working on the site
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Content
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-All copy lives in `docs/website-content.md`. Edit the text there, then update `index.html` to match.
+## Deploy on Vercel
 
-### Design tokens
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-CSS custom properties at the top of `src/style.css`:
-
-```css
-:root {
-  --bg:     #0c0c0a;   /* page background */
-  --accent: #c47c3a;   /* amber — primary accent */
-  --text:   #ede9df;   /* warm off-white */
-  /* ... */
-}
-```
-
-### Page sections
-
-The site is one scrollable page. Each section maps to a nav item:
-
-| Section ID        | Content                          |
-|-------------------|----------------------------------|
-| `#home`           | Hero, core loop, features, CTA   |
-| `#how-it-works`   | Capture, search, write, plugins  |
-| `#get-started`    | Requirements + setup steps       |
-| `#about`          | Origin story, philosophy, status |
-
-### Fonts
-
-Loaded from Google Fonts in `<head>`:
-
-| Font             | Used for                        |
-|------------------|---------------------------------|
-| Fraunces         | Headings, italic accents        |
-| Lora             | Body text                       |
-| JetBrains Mono   | Nav, labels, code, UI chrome    |
-
-### Scroll animations
-
-Add `reveal` to any element to fade it in on scroll. Use `reveal-delay-{1,2,3}` to stagger siblings:
-
-```html
-<div class="reveal reveal-delay-1">...</div>
-<div class="reveal reveal-delay-2">...</div>
-<div class="reveal reveal-delay-3">...</div>
-```
-
----
-
-## Deployment
-
-Vercel auto-deploys every push to `main`. To deploy manually:
-
-```bash
-vercel --prod --yes
-```
-
-To inspect logs:
-
-```bash
-vercel inspect <deployment-url> --logs
-```
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,0 +1,419 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-pixel: "Geist Mono", ui-monospace, monospace;
+  --font-heading: "Geist Mono", ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.17 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.965 0 0);
+  --secondary-foreground: oklch(0.17 0 0);
+  --muted: oklch(0.955 0.003 250);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.96 0.01 250);
+  --accent-foreground: oklch(0.17 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.65 0.08 250);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-geist-pixel-square), "Geist Mono", ui-monospace, monospace;
+  }
+}
+
+/* Geist Pixel — uses runtime CSS variable from next/font/local.
+   Cannot go in @theme inline because that resolves at parse time,
+   but the variable is only set at runtime via className on <html>. */
+.font-pixel {
+  font-family: var(--font-geist-pixel-square), "Geist Mono", ui-monospace, monospace;
+}
+
+/* ============================================================
+   NOISE GRAIN OVERLAY — atmospheric texture
+   ============================================================ */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* ============================================================
+   GRID BACKGROUND — subtle depth
+   ============================================================ */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.92 0 0 / 50%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.92 0 0 / 50%) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.bg-grid-fade {
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 30%, black 20%, transparent 100%);
+}
+
+/* ============================================================
+   DOT PATTERN — alternative subtle bg
+   ============================================================ */
+.bg-dots {
+  background-image: radial-gradient(circle, oklch(0.82 0 0) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ============================================================
+   GRADIENT TEXT — rich multi-stop
+   ============================================================ */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(0.08 0 0) 0%,
+    oklch(0.25 0.02 260) 40%,
+    oklch(0.35 0.04 280) 60%,
+    oklch(0.45 0.02 250) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   ANIMATED GRADIENT BORDER — rotating conic
+   ============================================================ */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card-glow {
+  --gradient-angle: 0deg;
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent 30%,
+    oklch(0.7 0.08 250 / 40%) 50%,
+    transparent 70%
+  );
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: gradient-rotate 3s linear infinite;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+.card-glow:hover {
+  border-color: transparent;
+  box-shadow:
+    0 0 0 1px oklch(0.8 0.04 250 / 20%),
+    0 8px 40px -12px oklch(0.6 0.08 250 / 15%),
+    0 2px 8px oklch(0.5 0 0 / 5%);
+  transform: translateY(-2px);
+}
+
+@keyframes gradient-rotate {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* ============================================================
+   SPOTLIGHT — cursor-following radial (set via JS)
+   ============================================================ */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    oklch(0.85 0.06 250 / 8%) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* ============================================================
+   AMBIENT BEAM — vertical light ray
+   ============================================================ */
+.beam {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    oklch(0.75 0.06 250 / 30%),
+    oklch(0.85 0.04 260 / 15%),
+    transparent
+  );
+  animation: beam-drift 8s ease-in-out infinite;
+}
+
+@keyframes beam-drift {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(1) translateY(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scaleY(1.1) translateY(-20px);
+  }
+}
+
+/* ============================================================
+   FLOATING ORB — ambient light source
+   ============================================================ */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: orb-float 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* ============================================================
+   SHINE SWEEP — horizontal light sweep on hover
+   ============================================================ */
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    oklch(1 0 0 / 15%) 45%,
+    oklch(1 0 0 / 25%) 50%,
+    oklch(1 0 0 / 15%) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.shine-sweep:hover::after {
+  transform: translateX(100%);
+}
+
+/* ============================================================
+   TERMINAL — dark inset with scanline feel
+   ============================================================ */
+.terminal {
+  background: oklch(0.1 0.005 260);
+  color: oklch(0.82 0 0);
+  font-family: var(--font-mono);
+  position: relative;
+}
+
+.terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    oklch(1 0 0 / 1.5%) 2px,
+    oklch(1 0 0 / 1.5%) 4px
+  );
+  pointer-events: none;
+}
+
+.terminal-prompt::before {
+  content: "❯ ";
+  color: oklch(0.7 0.15 160);
+}
+
+/* ============================================================
+   STAGGER ANIMATIONS — entrance sequences
+   ============================================================ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   PULSE RING — CTA attention ring
+   ============================================================ */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 oklch(0.5 0.06 250 / 30%);
+  }
+  70% {
+    box-shadow: 0 0 0 12px oklch(0.5 0.06 250 / 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.5 0.06 250 / 0%);
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+
+/* ============================================================
+   BLUR GLASS — frosted glass panels
+   ============================================================ */
+.glass {
+  background: oklch(1 0 0 / 60%);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid oklch(0.92 0 0 / 50%);
+}
