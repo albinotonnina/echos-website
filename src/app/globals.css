@@ -443,3 +443,45 @@
   backdrop-filter: blur(16px) saturate(1.2);
   border: 1px solid oklch(0.92 0 0 / 50%);
 }
+
+/* ============================================================
+   SURFACE REFLECTION — realistic floor reflection effect
+   ============================================================ */
+/* ============================================================
+   REFLECTION WRAPPER — sits around an element, renders below it
+   Use: <div class="reflection-wrap"><div class="overflow-hidden ...">content</div></div>
+   ============================================================ */
+.reflection-wrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.reflection-wrap::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px 15px oklch(0.4 0.02 250 / 15%);
+  pointer-events: none;
+}
+
+.reflection-wrap-dark::after {
+  left: 5%;
+  right: 5%;
+  box-shadow: 0 0 40px 20px oklch(0.1 0.02 260 / 30%);
+}
+
+.reflection-wrap-phone::after {
+  left: 15%;
+  right: 15%;
+  box-shadow: 0 0 24px 12px oklch(0.35 0.03 220 / 12%);
+}
+
+.reflection-wrap-video::after {
+  left: 5%;
+  right: 5%;
+  box-shadow: 0 0 40px 20px oklch(0.08 0.01 260 / 25%);
+}

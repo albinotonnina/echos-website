@@ -50,7 +50,7 @@ export function HowItWorks({
           <span className="text-gradient">How it works</span>
         </h2>
         <p className="mt-4 max-w-lg mx-auto text-muted-foreground">
-          An LLM agent with tools — not rigid command routing. Plain Markdown
+          An LLM agent with tools, not rigid command routing. Plain Markdown
           files you can open in Obsidian.
         </p>
       </motion.div>

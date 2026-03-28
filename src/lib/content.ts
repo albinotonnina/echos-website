@@ -9,7 +9,7 @@ const FALLBACK: SiteData = {
     {
       title: "Capture",
       description:
-        "Send anything — voice notes, URLs, text, images. EchOS extracts, summarizes, and tags it automatically.",
+        "Send anything: voice notes, URLs, text, images. EchOS extracts, summarizes, and tags it automatically.",
       icon: "inbox",
     },
     {
@@ -21,7 +21,7 @@ const FALLBACK: SiteData = {
     {
       title: "Write",
       description:
-        "Generate blog posts, emails, and threads grounded in your notes — in your voice, trained on your writing examples.",
+        "Generate blog posts, emails, and threads grounded in your notes, in your voice, trained on your writing examples.",
       icon: "pen-tool",
     },
   ],
@@ -61,30 +61,30 @@ const FALLBACK: SiteData = {
     {
       label: "Homebrew",
       command: "brew install echos && echos-setup",
-      description: "macOS — quickest path",
+      description: "macOS, quickest path",
     },
     {
       label: "One-liner",
       command:
         "curl -sSL https://raw.githubusercontent.com/albinotonnina/echos/main/install.sh | bash",
-      description: "Linux / macOS — auto-installs everything",
+      description: "Linux / macOS, auto-installs everything",
     },
     {
       label: "Docker",
       command: "docker compose up -d",
-      description: "Production — isolated, reproducible",
+      description: "Production, isolated, reproducible",
     },
     {
       label: "Manual",
       command: "git clone https://github.com/albinotonnina/echos.git && cd echos && pnpm install && pnpm build",
-      description: "Full control — build from source",
+      description: "Full control, build from source",
     },
   ],
   interfaces: [
     {
       name: "Telegram",
       status: "stable",
-      description: "Primary interface — voice, text, media",
+      description: "Primary interface: voice, text, media",
     },
     {
       name: "CLI",

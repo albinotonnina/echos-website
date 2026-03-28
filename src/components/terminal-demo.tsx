@@ -129,6 +129,7 @@ export function TerminalDemo() {
           }}
         />
 
+        <div className="reflection-wrap reflection-wrap-dark">
         <div className="relative overflow-hidden rounded-2xl border border-zinc-200/80 shadow-2xl shadow-zinc-300/30">
           {/* Title bar */}
           <div className="flex items-center gap-2 border-b border-zinc-800/80 bg-zinc-900 px-5 py-3.5">
@@ -138,7 +139,7 @@ export function TerminalDemo() {
               <div className="h-3 w-3 rounded-full bg-zinc-700/80" />
             </div>
             <span className="ml-3 font-mono text-xs text-zinc-500">
-              echos — ~/knowledge
+              echos · ~/knowledge
             </span>
           </div>
 
@@ -164,16 +165,7 @@ export function TerminalDemo() {
             )}
           </div>
         </div>
-
-        {/* Reflection */}
-        <div
-          className="pointer-events-none relative -z-10 mx-4 h-16 -mt-1 rounded-b-2xl opacity-20"
-          style={{
-            background:
-              "linear-gradient(to bottom, oklch(0.1 0 0), transparent)",
-            maskImage: "linear-gradient(to bottom, black, transparent)",
-          }}
-        />
+        </div>
       </motion.div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const links = [
   { href: "#features", label: "Features" },
@@ -25,27 +26,34 @@ export function Nav() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full border border-transparent transition-all duration-500 ${
         scrolled
-          ? "glass border-b border-border/30"
+          ? "border-b-border/30 bg-background/60 backdrop-blur-xl backdrop-saturate-[1.2]"
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-14 md:h-18 max-w-6xl items-center justify-between px-6">
         <a
           href="/"
-          className="flex items-center gap-2 font-pixel text-base tracking-tight transition-opacity hover:opacity-70"
+          className="flex items-center transition-opacity hover:opacity-70"
         >
-          EchOS
+          <Image
+            src="/logo-long-light.svg"
+            alt="EchOS"
+            width={140}
+            height={42}
+            className="h-7 w-auto md:h-10"
+            priority
+          />
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-1.5 font-pixel text-[13px] text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
+              className="rounded-lg px-4 py-2 font-pixel text-[15px] text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
               {...(link.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
@@ -53,17 +61,17 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <div className="ml-2 h-4 w-px bg-border" />
+          <div className="ml-3 h-5 w-px bg-border" />
           <a
             href="https://github.com/albinotonnina/echos"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 inline-flex h-8 items-center rounded-lg border border-border/50 bg-background/50 px-3 font-pixel text-[13px] backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50"
+            className="ml-3 inline-flex h-10 items-center rounded-lg border border-border/50 bg-background/50 px-4 font-pixel text-[15px] backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50"
           >
             <svg
               viewBox="0 0 16 16"
               fill="currentColor"
-              className="mr-1.5 h-3.5 w-3.5"
+              className="mr-2 h-4 w-4"
             >
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
             </svg>

@@ -25,7 +25,7 @@ export function Footer({ version }: { version: string }) {
           <div className="space-y-3">
             <div className="font-pixel text-2xl">EchOS</div>
             <p className="max-w-xs text-sm text-muted-foreground">
-              Your personal AI knowledge system — self-hosted, agent-driven, and
+              Your personal AI knowledge system. Self-hosted, agent-driven, and
               always private.
             </p>
             <div className="font-pixel text-[11px] text-muted-foreground/60">

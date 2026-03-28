@@ -7,12 +7,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "EchOS — Your personal AI knowledge system",
+  title: "EchOS: Your personal AI knowledge system",
   description:
     "Self-hosted, agent-driven personal knowledge management. Capture anything, search semantically, write in your voice. Always private.",
   metadataBase: new URL("https://echos.sh"),
   openGraph: {
-    title: "EchOS — Your personal AI knowledge system",
+    title: "EchOS: Your personal AI knowledge system",
     description:
       "Self-hosted, agent-driven personal knowledge management. Capture anything, search semantically, write in your voice.",
     url: "https://echos.sh",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EchOS — Your personal AI knowledge system",
+    title: "EchOS: Your personal AI knowledge system",
     description:
       "Self-hosted, agent-driven personal knowledge management. Capture anything, search semantically, write in your voice.",
   },

@@ -17,7 +17,7 @@ function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={copy}
-      className="absolute top-4 right-4 z-10 rounded-md border border-zinc-700/50 bg-zinc-800/80 px-2.5 py-1 font-mono text-[11px] text-zinc-400 backdrop-blur-sm transition-all hover:border-zinc-600 hover:bg-zinc-700 hover:text-zinc-200"
+      className="shrink-0 cursor-pointer rounded-md border border-zinc-700/50 bg-zinc-800/80 px-2.5 py-1 font-mono text-[11px] text-zinc-400 backdrop-blur-sm transition-all hover:border-zinc-600 hover:bg-zinc-700 hover:text-zinc-200"
     >
       {copied ? "Copied!" : "Copy"}
     </button>
@@ -83,6 +83,7 @@ export function InstallBlock({ methods }: { methods: InstallMethod[] }) {
               value={method.label.toLowerCase()}
               className="mt-6"
             >
+              <div className="reflection-wrap reflection-wrap-dark">
               <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 shadow-xl shadow-zinc-200/20">
                 {/* Glow behind */}
                 <div
@@ -106,13 +107,13 @@ export function InstallBlock({ methods }: { methods: InstallMethod[] }) {
                 </div>
 
                 {/* Command */}
-                <div className="terminal relative px-6 py-5">
+                <div className="terminal relative flex items-center justify-between gap-4 px-6 py-5">
                   <code className="font-mono text-sm leading-relaxed text-emerald-400 break-all">
                     {method.command}
                   </code>
+                  <CopyButton text={method.command} />
                 </div>
-
-                <CopyButton text={method.command} />
+              </div>
               </div>
             </TabsContent>
           ))}

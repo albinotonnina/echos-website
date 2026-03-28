@@ -59,6 +59,7 @@ export function VideoDemo() {
             }}
           />
 
+          <div className="reflection-wrap reflection-wrap-video">
           <button
             onClick={open}
             className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-zinc-200/60 shadow-xl shadow-zinc-200/30 transition-all hover:shadow-2xl hover:shadow-zinc-300/40"
@@ -105,6 +106,7 @@ export function VideoDemo() {
               </div>
             </div>
           </button>
+          </div>
         </motion.div>
       </section>
 

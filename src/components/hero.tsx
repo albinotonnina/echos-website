@@ -101,7 +101,7 @@ export function Hero({ version }: { version: string }) {
           className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
           So I built a system that remembers.{" "}
-          <span className="text-foreground/80">Self-hosted AI memory</span> —
+          <span className="text-foreground/80">Self-hosted AI memory</span>,
           capture anything, search semantically, write in your voice.
         </motion.p>
 
