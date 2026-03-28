@@ -110,7 +110,7 @@ export function Features({ features }: { features: Feature[] }) {
           <span className="text-gradient">Capture. Search. Write.</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Everything else is a plugin.
+          Three primitives. Extend everything else with plugins.
         </p>
       </motion.div>
 
