@@ -3,6 +3,7 @@ import { Nav } from "@/components/nav";
 import { GridBackground } from "@/components/grid-background";
 import { Hero } from "@/components/hero";
 import { TelegramDemo } from "@/components/telegram-demo";
+import { VideoDemo } from "@/components/video-demo";
 import { TerminalDemo } from "@/components/terminal-demo";
 import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
@@ -18,6 +19,7 @@ export default async function Home() {
       <GridBackground>
         <Hero version={data.version} />
         <TelegramDemo />
+        <VideoDemo />
         <TerminalDemo />
       </GridBackground>
       <Features features={data.features} />
