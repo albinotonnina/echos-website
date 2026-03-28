@@ -82,7 +82,7 @@ export function Hero({ version }: { version: string }) {
         >
           <Badge
             variant="secondary"
-            className="mb-8 border border-border/50 bg-background/80 px-4 py-1.5 font-mono text-xs backdrop-blur-sm"
+            className="mb-8 border border-border/50 bg-background/80 px-4 py-1.5 font-pixel text-xs backdrop-blur-sm"
           >
             v{version} · open source · MIT
           </Badge>
@@ -134,7 +134,7 @@ export function Hero({ version }: { version: string }) {
             href="#get-started"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "shine-sweep pulse-ring h-12 px-8 text-base"
+              "shine-sweep pulse-ring h-12 px-8 font-pixel text-base"
             )}
           >
             Get started
@@ -145,7 +145,7 @@ export function Hero({ version }: { version: string }) {
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "glass h-12 px-8 text-base"
+              "glass h-12 px-8 font-pixel text-base"
             )}
           >
             <svg
@@ -171,7 +171,7 @@ export function Hero({ version }: { version: string }) {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2 text-muted-foreground/40"
           >
-            <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
+            <span className="text-xs font-pixel tracking-widest uppercase">Scroll</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
                 d="M8 3v10M4 9l4 4 4-4"

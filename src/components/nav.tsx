@@ -45,7 +45,7 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
+              className="rounded-lg px-3 py-1.5 font-pixel text-[13px] text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
               {...(link.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
@@ -58,7 +58,7 @@ export function Nav() {
             href="https://github.com/albinotonnina/echos"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 inline-flex h-8 items-center rounded-lg border border-border/50 bg-background/50 px-3 text-[13px] font-medium backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50"
+            className="ml-2 inline-flex h-8 items-center rounded-lg border border-border/50 bg-background/50 px-3 font-pixel text-[13px] backdrop-blur-sm transition-all hover:border-border hover:bg-muted/50"
           >
             <svg
               viewBox="0 0 16 16"
@@ -119,7 +119,7 @@ export function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
+                  className="rounded-lg px-3 py-2 font-pixel text-sm text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
                   {...(link.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}

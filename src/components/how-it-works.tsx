@@ -43,7 +43,7 @@ export function HowItWorks({
         transition={{ duration: 0.5 }}
         className="mb-16 text-center"
       >
-        <span className="mb-4 inline-block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        <span className="mb-4 inline-block font-pixel text-xs uppercase tracking-[0.2em] text-muted-foreground">
           Under the hood
         </span>
         <h2 className="font-pixel text-3xl tracking-tight sm:text-4xl md:text-5xl">
@@ -76,7 +76,7 @@ export function HowItWorks({
                 transition={{ delay: 0.2 + i * 0.1 }}
                 className="flex items-center gap-4 border-b border-border/50 px-6 py-4 last:border-0"
               >
-                <span className="w-16 shrink-0 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                <span className="w-16 shrink-0 font-pixel text-xs uppercase tracking-wider text-muted-foreground">
                   {line.label}
                 </span>
                 <svg width="16" height="1" className="shrink-0 text-border">
@@ -107,7 +107,7 @@ export function HowItWorks({
               >
                 <Badge
                   variant="secondary"
-                  className="border border-border/30 font-mono text-xs"
+                  className="border border-border/30 font-pixel text-xs"
                 >
                   {tech}
                 </Badge>
@@ -139,7 +139,7 @@ export function HowItWorks({
                 >
                   <Badge
                     variant={iface.status === "stable" ? "default" : "secondary"}
-                    className="shrink-0 font-mono text-[10px] uppercase tracking-wider"
+                    className="shrink-0 font-pixel text-[10px] uppercase tracking-wider"
                   >
                     {iface.status}
                   </Badge>

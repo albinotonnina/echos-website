@@ -28,12 +28,20 @@ export function Footer({ version }: { version: string }) {
               Your personal AI knowledge system — self-hosted, agent-driven, and
               always private.
             </p>
-            <div className="font-mono text-[11px] text-muted-foreground/60">
-              v{version} · MIT License · Made with care
+            <div className="font-pixel text-[11px] text-muted-foreground/60">
+              v{version} · MIT License ·{" "}
+              <a
+                href="https://www.albinotonnina.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground/80 transition-colors hover:text-foreground"
+              >
+                Made with care
+              </a>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <div className="flex flex-wrap gap-x-8 gap-y-3 font-pixel text-sm">
             {[
               {
                 label: "Documentation",

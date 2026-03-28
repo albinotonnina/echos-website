@@ -2,6 +2,7 @@ import { getSiteData } from "@/lib/content";
 import { Nav } from "@/components/nav";
 import { GridBackground } from "@/components/grid-background";
 import { Hero } from "@/components/hero";
+import { TelegramDemo } from "@/components/telegram-demo";
 import { TerminalDemo } from "@/components/terminal-demo";
 import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
@@ -16,6 +17,7 @@ export default async function Home() {
       <Nav />
       <GridBackground>
         <Hero version={data.version} />
+        <TelegramDemo />
         <TerminalDemo />
       </GridBackground>
       <Features features={data.features} />

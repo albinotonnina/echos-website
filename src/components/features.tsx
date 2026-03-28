@@ -102,7 +102,7 @@ export function Features({ features }: { features: Feature[] }) {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mb-4 inline-block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"
+          className="mb-4 inline-block font-pixel text-xs uppercase tracking-[0.2em] text-muted-foreground"
         >
           The core loop
         </motion.span>

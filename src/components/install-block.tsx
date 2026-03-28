@@ -46,7 +46,7 @@ export function InstallBlock({ methods }: { methods: InstallMethod[] }) {
         transition={{ duration: 0.5 }}
         className="relative mb-12 text-center"
       >
-        <span className="mb-4 inline-block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        <span className="mb-4 inline-block font-pixel text-xs uppercase tracking-[0.2em] text-muted-foreground">
           Self-host in minutes
         </span>
         <h2 className="font-pixel text-3xl tracking-tight sm:text-4xl md:text-5xl">
@@ -70,7 +70,7 @@ export function InstallBlock({ methods }: { methods: InstallMethod[] }) {
               <TabsTrigger
                 key={method.label}
                 value={method.label.toLowerCase()}
-                className="font-mono text-xs data-[state=active]:text-foreground"
+                className="font-pixel text-xs data-[state=active]:text-foreground"
               >
                 {method.label}
               </TabsTrigger>
