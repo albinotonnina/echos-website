@@ -23,3 +23,7 @@ blog/_generated/
 *.sln
 
 docs/
+# Hive
+.hive/worktrees/
+.hive/.registry.lock
+.hive/logs/
