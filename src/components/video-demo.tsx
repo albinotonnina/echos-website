@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback } from "react";
 
 const VIDEO_ID = "D3QCQXqNewU";
-const THUMBNAIL = `https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
+// hqdefault always exists; maxresdefault may not for all videos
+const THUMBNAIL = `https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`;
 
 function PlayIcon() {
   return (
@@ -41,7 +42,7 @@ export function VideoDemo() {
   return (
     <>
       {/* Inline card */}
-      <section className="mx-auto max-w-4xl px-6 py-12">
+      <section className="mx-auto w-full max-w-4xl px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,15 +61,15 @@ export function VideoDemo() {
 
           <button
             onClick={open}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-zinc-200/60 shadow-xl shadow-zinc-200/30 transition-all hover:shadow-2xl hover:shadow-zinc-300/40"
+            className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-zinc-200/60 shadow-xl shadow-zinc-200/30 transition-all hover:shadow-2xl hover:shadow-zinc-300/40"
           >
-            {/* Thumbnail with overlay */}
+            {/* Thumbnail with overlay — aspect-video ensures size even if image fails */}
             <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={THUMBNAIL}
                 alt="EchOS demo video"
-                className="h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+                className="absolute inset-0 h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
               />
 
               {/* Dark gradient overlay */}

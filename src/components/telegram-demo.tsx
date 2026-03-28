@@ -205,7 +205,7 @@ export function TelegramDemo() {
   const noop = useCallback(() => {}, []);
 
   return (
-    <section ref={ref} className="mx-auto max-w-4xl px-6 py-16">
+    <section ref={ref} className="mx-auto w-full max-w-4xl px-6 py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +229,7 @@ export function TelegramDemo() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mx-auto max-w-sm"
+        className="relative mx-auto w-[340px]"
       >
         {/* Phone frame glow */}
         <div
@@ -270,8 +270,8 @@ export function TelegramDemo() {
               </div>
             </div>
 
-            {/* Messages area */}
-            <div className="flex min-h-[340px] flex-col gap-1.5 overflow-hidden px-2.5 py-3">
+            {/* Messages area — fixed height for phone proportions */}
+            <div className="flex h-[660px] flex-col gap-1.5 overflow-hidden px-2.5 py-3">
               {conversation
                 .filter((msg) => visibleMessages.includes(msg.id))
                 .map((msg) => (

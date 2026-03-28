@@ -1,6 +1,5 @@
 import { getSiteData } from "@/lib/content";
 import { Nav } from "@/components/nav";
-import { GridBackground } from "@/components/grid-background";
 import { Hero } from "@/components/hero";
 import { TelegramDemo } from "@/components/telegram-demo";
 import { VideoDemo } from "@/components/video-demo";
@@ -16,12 +15,10 @@ export default async function Home() {
   return (
     <>
       <Nav />
-      <GridBackground>
-        <Hero version={data.version} />
-        <TelegramDemo />
-        <VideoDemo />
-        <TerminalDemo />
-      </GridBackground>
+      <Hero version={data.version} />
+      <TelegramDemo />
+      <VideoDemo />
+      <TerminalDemo />
       <Features features={data.features} />
       <HowItWorks interfaces={data.interfaces} plugins={data.plugins} />
       <InstallBlock methods={data.installMethods} />

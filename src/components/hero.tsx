@@ -1,105 +1,87 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { InteractiveGrid } from "@/components/interactive-grid";
 
 const words = ["I kept learning things", "and then losing them."];
 
 export function Hero({ version }: { version: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-  const springX = useSpring(mouseX, { damping: 25, stiffness: 150 });
-  const springY = useSpring(mouseY, { damping: 25, stiffness: 150 });
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const handleMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      mouseX.set((e.clientX - rect.left) / rect.width);
-      mouseY.set((e.clientY - rect.top) / rect.height);
-    };
-
-    el.addEventListener("mousemove", handleMove);
-    return () => el.removeEventListener("mousemove", handleMove);
-  }, [mouseX, mouseY]);
-
   return (
-    <section
-      ref={containerRef}
-      className="spotlight relative flex min-h-[95vh] flex-col items-center justify-center overflow-hidden px-6 pt-24"
-      style={
-        {
-          "--mouse-x": `${springX.get() * 100}%`,
-          "--mouse-y": `${springY.get() * 100}%`,
-        } as React.CSSProperties
-      }
-    >
-      {/* Floating orbs */}
-      <div
-        className="orb -top-20 left-[15%] h-[400px] w-[400px]"
-        style={{ background: "oklch(0.8 0.08 250)" }}
-      />
-      <div
-        className="orb top-[30%] right-[10%] h-[300px] w-[300px]"
-        style={{
-          background: "oklch(0.85 0.06 280)",
-          animationDelay: "-4s",
-          animationDuration: "15s",
-        }}
-      />
-      <div
-        className="orb bottom-[10%] left-[30%] h-[250px] w-[250px]"
-        style={{
-          background: "oklch(0.82 0.05 200)",
-          animationDelay: "-8s",
-          animationDuration: "18s",
-        }}
-      />
+    <section className="relative flex min-h-[95vh] flex-col items-center justify-center overflow-hidden px-6 pt-24">
+      {/* Interactive dot grid — responds to cursor */}
+      <div className="absolute inset-0">
+        <InteractiveGrid />
+      </div>
 
-      {/* Vertical beams */}
-      <div className="beam left-[20%] top-0 h-[60%]" />
-      <div
-        className="beam right-[25%] top-[10%] h-[50%]"
-        style={{ animationDelay: "-3s" }}
-      />
-      <div
-        className="beam left-[60%] top-[5%] h-[45%]"
-        style={{ animationDelay: "-6s", opacity: 0.2 }}
-      />
+      {/* Aurora gradient mesh — slow morphing colors */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute -top-[20%] left-[10%] h-[600px] w-[800px] animate-aurora-1 rounded-full opacity-[0.07]"
+          style={{
+            background:
+              "radial-gradient(ellipse, oklch(0.75 0.1 240) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
+        <div
+          className="absolute top-[10%] right-[5%] h-[500px] w-[600px] animate-aurora-2 rounded-full opacity-[0.06]"
+          style={{
+            background:
+              "radial-gradient(ellipse, oklch(0.8 0.08 280) 0%, transparent 70%)",
+            filter: "blur(100px)",
+          }}
+        />
+        <div
+          className="absolute bottom-[5%] left-[25%] h-[400px] w-[700px] animate-aurora-3 rounded-full opacity-[0.05]"
+          style={{
+            background:
+              "radial-gradient(ellipse, oklch(0.78 0.06 200) 0%, transparent 70%)",
+            filter: "blur(90px)",
+          }}
+        />
+      </div>
+
+      {/* Horizontal light streak */}
+      <div className="pointer-events-none absolute top-[40%] left-0 h-px w-full">
+        <div
+          className="mx-auto h-full max-w-4xl"
+          style={{
+            background:
+              "linear-gradient(to right, transparent, oklch(0.8 0.06 250 / 20%), oklch(0.85 0.04 260 / 30%), oklch(0.8 0.06 250 / 20%), transparent)",
+          }}
+        />
+      </div>
 
       <div className="relative z-10 flex flex-col items-center text-center">
         {/* Version badge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 0, scale: 0.9, filter: "blur(4px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           <Badge
             variant="secondary"
-            className="mb-8 border border-border/50 bg-background/80 px-4 py-1.5 font-pixel text-xs backdrop-blur-sm"
+            className="mb-8 border border-border/40 bg-background/70 px-4 py-1.5 font-pixel text-xs backdrop-blur-md"
           >
             v{version} · open source · MIT
           </Badge>
         </motion.div>
 
-        {/* Headline — staggered word reveal */}
+        {/* Headline — staggered word reveal with blur */}
         <h1 className="max-w-4xl font-pixel text-4xl leading-[1.1] tracking-tight sm:text-5xl md:text-7xl">
           {words.map((line, lineIdx) => (
             <span key={lineIdx} className="block">
               {line.split(" ").map((word, wordIdx) => (
                 <motion.span
                   key={`${lineIdx}-${wordIdx}`}
-                  initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                  initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{
-                    duration: 0.6,
-                    delay: 0.4 + lineIdx * 0.3 + wordIdx * 0.08,
+                    duration: 0.7,
+                    delay: 0.3 + lineIdx * 0.35 + wordIdx * 0.08,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className="mr-[0.25em] inline-block text-gradient"
@@ -113,9 +95,9 @@ export function Hero({ version }: { version: string }) {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.2 }}
+          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 1.2 }}
           className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
           So I built a system that remembers.{" "}
@@ -163,15 +145,17 @@ export function Hero({ version }: { version: string }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.2, duration: 1 }}
+          transition={{ delay: 2.5, duration: 1 }}
           className="mt-20"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-muted-foreground/40"
+            className="flex flex-col items-center gap-2 text-muted-foreground/30"
           >
-            <span className="text-xs font-pixel tracking-widest uppercase">Scroll</span>
+            <span className="font-pixel text-[10px] uppercase tracking-[0.3em]">
+              Scroll
+            </span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
                 d="M8 3v10M4 9l4 4 4-4"

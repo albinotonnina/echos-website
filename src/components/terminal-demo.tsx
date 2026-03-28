@@ -111,7 +111,7 @@ export function TerminalDemo() {
   );
 
   return (
-    <section className="mx-auto max-w-4xl px-6 py-16">
+    <section className="mx-auto w-full max-w-4xl px-6 py-16">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 40, scale: 0.97 }}
