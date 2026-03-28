@@ -22,7 +22,7 @@ const FALLBACK: SiteData = {
     {
       title: "Capture",
       description:
-        "Send anything: voice notes, URLs, text, images. EchOS extracts, summarizes, and tags it automatically.",
+        "Send anything: voice notes, URLs, text, images, YouTube videos, tweets. EchOS extracts, summarizes, and tags it automatically.",
       icon: "inbox",
     },
     {

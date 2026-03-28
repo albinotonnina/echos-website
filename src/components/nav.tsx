@@ -32,7 +32,7 @@ export function Nav() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-14 md:h-18 max-w-6xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-16 md:h-20 max-w-6xl items-center justify-between px-6">
         <a
           href="/"
           className="flex items-center transition-opacity hover:opacity-70"
@@ -40,9 +40,9 @@ export function Nav() {
           <Image
             src="/logo-long-light.svg"
             alt="EchOS"
-            width={140}
-            height={42}
-            className="h-7 w-auto md:h-10"
+            width={200}
+            height={60}
+            className="h-9 w-auto md:h-14"
             priority
           />
         </a>
