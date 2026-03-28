@@ -24,6 +24,7 @@ export interface Interface {
 
 export interface SiteData {
   version: string;
+  description: string;
   features: Feature[];
   plugins: Plugin[];
   installMethods: InstallMethod[];

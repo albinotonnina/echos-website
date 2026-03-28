@@ -4,18 +4,11 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { InteractiveGrid } from "@/components/interactive-grid";
-
 const words = ["I kept learning things", "and then losing them."];
 
 export function Hero({ version }: { version: string }) {
   return (
     <section className="relative flex min-h-[95vh] flex-col items-center justify-center overflow-hidden px-6 pt-24">
-      {/* Interactive dot grid — responds to cursor */}
-      <div className="absolute inset-0">
-        <InteractiveGrid />
-      </div>
-
       {/* Aurora gradient mesh — slow morphing colors */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div

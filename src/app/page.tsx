@@ -8,21 +8,25 @@ import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
 import { InstallBlock } from "@/components/install-block";
 import { Footer } from "@/components/footer";
+import { InteractiveGrid } from "@/components/interactive-grid";
 
 export default async function Home() {
   const data = await getSiteData();
 
   return (
     <>
-      <Nav />
-      <Hero version={data.version} />
-      <TelegramDemo />
-      <VideoDemo />
-      <TerminalDemo />
-      <Features features={data.features} />
-      <HowItWorks interfaces={data.interfaces} plugins={data.plugins} />
-      <InstallBlock methods={data.installMethods} />
-      <Footer version={data.version} />
+      <InteractiveGrid />
+      <div className="relative z-10">
+        <Nav />
+        <Hero version={data.version} />
+        <TelegramDemo />
+        <VideoDemo />
+        <TerminalDemo />
+        <Features features={data.features} />
+        <HowItWorks interfaces={data.interfaces} plugins={data.plugins} />
+        <InstallBlock methods={data.installMethods} />
+        <Footer version={data.version} />
+      </div>
     </>
   );
 }

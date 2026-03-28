@@ -3,8 +3,21 @@ import type { SiteData, Plugin } from "@/types/content";
 const GITHUB_RAW =
   "https://raw.githubusercontent.com/albinotonnina/echos/main";
 
+/** Descriptions for known plugins — merged with live data from the repo */
+const PLUGIN_DESCRIPTIONS: Record<string, string> = {
+  "@echos/plugin-youtube": "Transcript extraction",
+  "@echos/plugin-article": "Web article extraction",
+  "@echos/plugin-twitter": "Tweet thread extraction",
+  "@echos/plugin-image": "Image storage & analysis",
+  "@echos/plugin-digest": "Daily knowledge digest",
+  "@echos/plugin-journal": "Periodic journaling",
+  "@echos/plugin-content-creation": "Blog posts, emails & threads",
+  "@echos/plugin-resurface": "Rediscover forgotten notes",
+};
+
 const FALLBACK: SiteData = {
   version: "0.13.1",
+  description: "Agent-driven personal knowledge management system",
   features: [
     {
       title: "Capture",
@@ -123,24 +136,32 @@ function parseVersion(packageJson: string): string {
 function parsePlugins(packageJson: string): Plugin[] {
   try {
     const pkg = JSON.parse(packageJson);
-    const workspaces: string[] = pkg.pnpm?.overrides
-      ? []
-      : Object.keys(pkg.devDependencies || {});
 
-    // Look for plugin workspace references
     const pluginPackages = Object.keys(pkg.dependencies || {})
       .concat(Object.keys(pkg.devDependencies || {}))
       .filter((dep) => dep.startsWith("@echos/plugin-"));
 
     if (pluginPackages.length === 0) return FALLBACK.plugins;
 
-    return pluginPackages.map((pkg) => ({
-      name: pkg.replace("@echos/plugin-", "").replace(/-/g, " "),
-      description: "",
-      package: pkg,
+    return pluginPackages.map((pkgName) => ({
+      name: pkgName
+        .replace("@echos/plugin-", "")
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
+      description: PLUGIN_DESCRIPTIONS[pkgName] ?? "",
+      package: pkgName,
     }));
   } catch {
     return FALLBACK.plugins;
+  }
+}
+
+function parseDescription(packageJson: string): string {
+  try {
+    const pkg = JSON.parse(packageJson);
+    return pkg.description || FALLBACK.description;
+  } catch {
+    return FALLBACK.description;
   }
 }
 
@@ -151,10 +172,10 @@ export async function getSiteData(): Promise<SiteData> {
     return FALLBACK;
   }
 
-  const version = parseVersion(packageJson);
-
   return {
     ...FALLBACK,
-    version,
+    version: parseVersion(packageJson),
+    description: parseDescription(packageJson),
+    plugins: parsePlugins(packageJson),
   };
 }

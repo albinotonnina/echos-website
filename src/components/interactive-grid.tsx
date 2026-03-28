@@ -163,24 +163,19 @@ export function InteractiveGrid() {
     if (!canvas) return;
 
     const resize = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       dprRef.current = dpr;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-      initDots(rect.width, rect.height);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      initDots(w, h);
     };
 
     const handleMouse = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
 
     const handleLeave = () => {
@@ -189,14 +184,14 @@ export function InteractiveGrid() {
 
     resize();
     window.addEventListener("resize", resize);
-    canvas.addEventListener("mousemove", handleMouse);
-    canvas.addEventListener("mouseleave", handleLeave);
+    window.addEventListener("mousemove", handleMouse);
+    document.addEventListener("mouseleave", handleLeave);
     animRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("resize", resize);
-      canvas.removeEventListener("mousemove", handleMouse);
-      canvas.removeEventListener("mouseleave", handleLeave);
+      window.removeEventListener("mousemove", handleMouse);
+      document.removeEventListener("mouseleave", handleLeave);
       cancelAnimationFrame(animRef.current);
     };
   }, [initDots, animate]);
@@ -204,7 +199,7 @@ export function InteractiveGrid() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-auto absolute inset-0"
+      className="pointer-events-none fixed inset-0 z-0"
       aria-hidden
     />
   );
