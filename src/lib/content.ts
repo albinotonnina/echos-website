@@ -13,10 +13,13 @@ const PLUGIN_DESCRIPTIONS: Record<string, string> = {
   "@echos/plugin-journal": "Periodic journaling",
   "@echos/plugin-content-creation": "Blog posts, emails & threads",
   "@echos/plugin-resurface": "Rediscover forgotten notes",
+  "@echos/plugin-pdf": "PDF document extraction",
+  "@echos/plugin-audio": "Audio transcription & capture",
+  "@echos/plugin-rss": "RSS feed monitoring",
 };
 
 const FALLBACK: SiteData = {
-  version: "0.13.1",
+  version: "0.14.3",
   description: "Agent-driven personal knowledge management system",
   features: [
     {
@@ -68,6 +71,26 @@ const FALLBACK: SiteData = {
       name: "Journal",
       description: "Periodic journaling",
       package: "@echos/plugin-journal",
+    },
+    {
+      name: "Resurface",
+      description: "Rediscover forgotten notes",
+      package: "@echos/plugin-resurface",
+    },
+    {
+      name: "PDF",
+      description: "PDF document extraction",
+      package: "@echos/plugin-pdf",
+    },
+    {
+      name: "Audio",
+      description: "Audio transcription & capture",
+      package: "@echos/plugin-audio",
+    },
+    {
+      name: "RSS",
+      description: "RSS feed monitoring",
+      package: "@echos/plugin-rss",
     },
   ],
   installMethods: [
