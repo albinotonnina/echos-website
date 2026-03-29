@@ -1,0 +1,36 @@
+name: Rebuild & Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Reason for rebuild (optional)"
+        required: false
+        type: string
+
+  # Also allow triggering via repository_dispatch (API call)
+  repository_dispatch:
+    types: [rebuild]
+
+jobs:
+  trigger-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push empty commit to trigger Vercel deploy
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: rebuild site — ${{ github.event.inputs.reason || 'manual trigger' }}"
+          git push
+
+      - name: Summary
+        run: |
+          echo "## Rebuild Triggered" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Reason:** ${{ github.event.inputs.reason || 'Manual rebuild' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
