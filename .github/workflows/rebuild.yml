@@ -13,19 +13,19 @@ on:
     types: [rebuild]
 
 jobs:
-  trigger-vercel-deploy:
+  trigger-rebuild:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Vercel Deploy Hook
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push empty commit to trigger Vercel deploy
         run: |
-          echo "Triggering Vercel rebuild..."
-          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}")
-          if [ "$response" = "200" ] || [ "$response" = "201" ]; then
-            echo "✓ Deploy triggered successfully"
-          else
-            echo "✗ Deploy hook returned HTTP $response"
-            exit 1
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: rebuild site — ${{ github.event.inputs.reason || 'manual trigger' }}"
+          git push
 
       - name: Summary
         run: |
