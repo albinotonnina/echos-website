@@ -9,6 +9,11 @@ const links = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#get-started", label: "Get started" },
   { href: "https://docs.echos.sh", label: "Docs", external: true },
+  {
+    href: "https://github.com/albinotonnina/echos/releases",
+    label: "Releases",
+    external: true,
+  },
 ];
 
 export function Nav() {

@@ -18,12 +18,21 @@ export const metadata: Metadata = {
     url: "https://echos.sh",
     siteName: "EchOS",
     type: "website",
+    images: [
+      {
+        url: "/images/banner.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "EchOS – Your personal AI knowledge system",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "EchOS: Your personal AI knowledge system",
     description:
       "Self-hosted, agent-driven personal knowledge management. Capture anything, search semantically, write in your voice.",
+    images: ["/images/banner.jpeg"],
   },
 };
 
