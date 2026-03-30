@@ -43,7 +43,7 @@ export function Nav() {
           className="flex items-center transition-opacity hover:opacity-70"
         >
           <Image
-            src="/logo-long-light.svg"
+            src="/images/logo-long-light.svg"
             alt="EchOS"
             width={200}
             height={60}
